@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Armut.MS.Domain\Armut.MS.Domain.csproj" />
+    <ProjectReference Include="..\Armut.MS.SharedObjects\Armut.MS.SharedObjects.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Mapping\" />
+    <None Remove="Login\" />
+    <None Remove="Message\" />
+    <None Remove="Chat\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+    <Folder Include="Login\" />
+    <Folder Include="Message\" />
+    <Folder Include="Chat\" />
+  </ItemGroup>
+</Project>
