@@ -1,5 +1,15 @@
 version: '3.8'
 services:
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - armut
+
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
     container_name: es01
@@ -18,7 +28,7 @@ services:
     ports:
       - 9200:9200
     networks:
-      - elastic
+      - armut
 
   kib01:
     image: docker.elastic.co/kibana/kibana:7.15.2
@@ -29,12 +39,12 @@ services:
       ELASTICSEARCH_URL: http://es01:9200
       ELASTICSEARCH_HOSTS: http://es01:9200
     networks:
-      - elastic
+      - armut
 
 volumes:
   data01:
     driver: local
 
 networks:
-  elastic:
+  armut:
     driver: bridge

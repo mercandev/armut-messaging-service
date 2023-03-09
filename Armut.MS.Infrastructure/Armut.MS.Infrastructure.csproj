@@ -19,6 +19,8 @@
     <None Remove="AutoMapper\" />
     <None Remove="Helper\" />
     <None Remove="Validation\" />
+    <None Remove="Enum\" />
+    <None Remove="WebSockets\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Engine\" />
@@ -32,6 +34,8 @@
     <Folder Include="Entity\" />
     <Folder Include="Helper\" />
     <Folder Include="Validation\" />
+    <Folder Include="Enum\" />
+    <Folder Include="WebSockets\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
@@ -44,5 +48,6 @@
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.0" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+    <PackageReference Include="System.Net.WebSockets" Version="4.3.0" />
   </ItemGroup>
 </Project>

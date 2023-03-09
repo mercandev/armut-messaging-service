@@ -1,4 +1,6 @@
 ﻿using System;
+using MongoDB.Bson;
+
 namespace Armut.MS.Infrastructure.Helper;
 
 public static class ArmutMSHelper
@@ -21,5 +23,7 @@ public static class ArmutMSHelper
 
         return false;
     }
+
+    public static ObjectId BsonParserId(string Id) => MongoDB.Bson.ObjectId.Parse(Id);
 }
 

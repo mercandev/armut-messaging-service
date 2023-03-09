@@ -30,4 +30,9 @@ public class UserController : Controller
     [HttpGet]
     public async Task<bool> BanUser([CustomArmutValidation] string username)
     => await _userService.BanUser(username);
+
+    [HttpGet]
+    [AllowAnonymous]
+    public IActionResult HealtCheck()
+    => Ok("Api is a live! :)");
 }

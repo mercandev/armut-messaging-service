@@ -3,6 +3,7 @@ using Armut.MS.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Serilog;
 
 namespace Armut.MS.Infrastructure.Engine;
 

@@ -8,7 +8,7 @@ namespace Armut.MS.Domain.Model;
 [BsonCollection("message")]
 public class Messages : Document
 {
-    public Guid ChatId { get; set; }
+    public ObjectId ChatId { get; set; }
     public ObjectId OwnerId { get; set; }
     public ObjectId ReceiverId { get; set; }
     public string Content { get; set; }

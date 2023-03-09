@@ -20,7 +20,7 @@ public class JwtSecurity : IJwtSecurity
             issuer: _jwtModel.Issuer,
             audience: _jwtModel.Audience,
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(10),
+            expires: DateTime.UtcNow.AddHours(5),
             notBefore: DateTime.UtcNow,
             signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtModel.Key)),SecurityAlgorithms.HmacSha256)
         );

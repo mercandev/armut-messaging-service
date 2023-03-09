@@ -13,13 +13,16 @@
   <ItemGroup>
     <None Remove="Mapping\" />
     <None Remove="Login\" />
-    <None Remove="Message\" />
     <None Remove="Chat\" />
+    <None Remove="Message\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />
     <Folder Include="Login\" />
-    <Folder Include="Message\" />
     <Folder Include="Chat\" />
+    <Folder Include="Message\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
   </ItemGroup>
 </Project>

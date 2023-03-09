@@ -9,13 +9,13 @@
   <ItemGroup>
     <None Remove="User\" />
     <None Remove="Login\" />
-    <None Remove="ErrorMessage\" />
+    <None Remove="Chat\" />
     <None Remove="Message\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="User\" />
     <Folder Include="Login\" />
-    <Folder Include="ErrorMessage\" />
+    <Folder Include="Chat\" />
     <Folder Include="Message\" />
   </ItemGroup>
   <ItemGroup>
