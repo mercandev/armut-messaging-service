@@ -29,7 +29,7 @@ public class LoginService : ILoginService
         if (userResult is null)
         {
             _logger.Error("User not found!");
-            throw new Exception("User not found!");
+            throw new ApplicationException("User not found!");
         }
 
         userResult.LastLoginDate = DateTime.Now;

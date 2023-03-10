@@ -28,7 +28,7 @@ public class UserController : Controller
     => await _userService.CreateUser(model);
 
     [HttpGet]
-    public async Task<bool> BanUser([CustomArmutValidation] string username)
+    public async Task<bool> BanUser([CustomArmutValidationAttribute] string username)
     => await _userService.BanUser(username);
 
     [HttpGet]

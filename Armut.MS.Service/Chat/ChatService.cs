@@ -46,7 +46,7 @@ public class ChatService : IChatService
         if (username.ToLower().Equals(_authUserInformation.Username))
         {
             _logger.Error($"You cannot send messages to your own username: {_authUserInformation.Username} - UserId: {_authUserInformation.UserId}");
-            throw new Exception("You cannot send messages to your own username");
+            throw new ApplicationException("You cannot send messages to your own username");
         }
 
         var checkUser = await _usersRepository.FindOneAsync(x => x.Username == username && x.IsActive);
@@ -54,7 +54,7 @@ public class ChatService : IChatService
         if (checkUser is null)
         {
             _logger.Error($"Chat not create! Because user not found!: Username: {username}");
-            throw new Exception("Chat not create! Because user not found!");
+            throw new ApplicationException("Chat not create! Because user not found!");
         }
 
         var room = new Chats();
@@ -107,7 +107,7 @@ public class ChatService : IChatService
 
             if (result.MessageType == WebSocketMessageType.Close)
             {
-                await RemoveWebSocket(id, username , roomInformation);
+                await RemoveWebSocket(id, roomInformation);
             }
             else
             {
@@ -117,7 +117,7 @@ public class ChatService : IChatService
                     await CloseRoom(roomInformation);
                     await SendAsync($"You have been blocked by {username}! The session has ended.", CancellationToken.None);
                    
-                    throw new Exception("You have been blocked by user. The session has ended!");
+                    throw new ApplicationException("You have been blocked by user. The session has ended!");
                 }
 
                 string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
@@ -127,10 +127,10 @@ public class ChatService : IChatService
             }
         }
 
-        await RemoveWebSocket(id, username , roomInformation);
+        await RemoveWebSocket(id, roomInformation);
     }
 
-    private async Task RemoveWebSocket(string id, string username, Chats roomInformation)
+    private async Task RemoveWebSocket(string id, Chats roomInformation)
     {
         if (_sockets.TryRemove(id, out WebSocket removedSocket))
         {
@@ -183,7 +183,7 @@ public class ChatService : IChatService
         if (result)
         {
             _logger.Error($"You cannot send messages because you have been banned by the user!: Username: {username} - AuthUser:{_authUserInformation.UserId}");
-            throw new Exception("You cannot send messages because you have been banned by the user!");
+            throw new ApplicationException("You cannot send messages because you have been banned by the user!");
         }
     }
 

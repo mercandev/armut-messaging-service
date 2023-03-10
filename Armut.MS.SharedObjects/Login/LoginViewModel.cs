@@ -6,9 +6,9 @@ namespace Armut.MS.SharedObjects.Login;
 
 public sealed record class LoginViewModel
 {
-    [CustomArmutValidation]
+    [CustomArmutValidationAttribute]
     public string Username { get; set; }
 
-    [CustomArmutValidation]
+    [CustomArmutValidationAttribute]
     public string Password { get; set; }
 }

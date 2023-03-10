@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Armut.MS.Infrastructure.Validation;
 
-public class CustomArmutValidation : ValidationAttribute
+public class CustomArmutValidationAttribute : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
@@ -11,15 +11,15 @@ public class CustomArmutValidation : ValidationAttribute
         {
             if ((int)value == default)
             {
-                throw new Exception($"{validationContext.DisplayName} cannot be default!");
+                throw new NullReferenceException($"{validationContext.DisplayName} cannot be default!");
             }
 
             return ValidationResult.Success;
         }
 
-        if ((string)value.ToString() == ValidationControlWorldsString().FirstOrDefault())
+        if (value.ToString() == ValidationControlWorldsString().FirstOrDefault())
         {
-            throw new Exception($"{validationContext.DisplayName} cannot be empty or null!");
+            throw new NullReferenceException($"{validationContext.DisplayName} cannot be empty or null!");
         }
 
         if (!string.IsNullOrWhiteSpace(Convert.ToString(value)))
@@ -27,7 +27,7 @@ public class CustomArmutValidation : ValidationAttribute
             return ValidationResult.Success;
         }
 
-        throw new Exception($"{validationContext.DisplayName} cannot be empty or null!");
+        throw new NullReferenceException($"{validationContext.DisplayName} cannot be empty or null!");
     }
 
     private IEnumerable<string> ValidationControlWorldsString()

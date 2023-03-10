@@ -25,6 +25,6 @@ public class MessageController : Controller
     =>  _messageService.ChatRoomList();
 
     [HttpGet]
-    public List<MessageHistoryListViewModel> GetMessageList([CustomArmutValidation] string chatId)
+    public List<MessageHistoryListViewModel> GetMessageList([CustomArmutValidationAttribute] string chatId)
     => _messageService.MessageListViaChatId(chatId);
 }

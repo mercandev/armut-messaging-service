@@ -6,18 +6,18 @@ namespace Armut.MS.SharedObjects.User;
 
 public sealed record UserCreateViewModel
 {
-    [CustomArmutValidation]
+    [CustomArmutValidationAttribute]
     public string Name { get; set; }
 
-    [CustomArmutValidation]
+    [CustomArmutValidationAttribute]
     public string Surname { get; set; }
 
-    [CustomArmutValidation]
+    [CustomArmutValidationAttribute]
     public string Username { get; set; }
 
-    [CustomArmutValidation]
+    [CustomArmutValidationAttribute]
     public string Password { get; set; }
 
-    [CustomArmutValidation]
+    [CustomArmutValidationAttribute]
     public string Email { get; set; }
 }

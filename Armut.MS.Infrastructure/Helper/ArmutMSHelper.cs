@@ -1,5 +1,6 @@
 ﻿using System;
 using MongoDB.Bson;
+using System.Linq;
 
 namespace Armut.MS.Infrastructure.Helper;
 
@@ -13,12 +14,9 @@ public static class ArmutMSHelper
 
     public static bool CheckBannedUser(string[] list, string username)
     {
-        foreach (var users in list)
+        foreach (var _ in from users in list where users.Contains(username) select new { })
         {
-            if(users.Contains(username))
-            {
-                return true;
-            }
+            return true;
         }
 
         return false;

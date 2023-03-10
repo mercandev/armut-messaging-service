@@ -25,21 +25,21 @@ public class UserService : IUserService
     {
         if (username.Equals(_authUserInformation.Username))
         {
-            throw new Exception("You cannot block your own user!");
+            throw new ApplicationException("You cannot block your own user!");
         }
 
         var userToBeBlock = await _usersRepository.FindOneAsync(x=> x.Username == username && x.IsActive);
 
         if (userToBeBlock is null)
         {
-            throw new Exception("User not found!");
+            throw new ApplicationException("User not found!");
         }
 
         var userToBlock = await _usersRepository.FindByIdAsync(_authUserInformation.UserId.ToString());
 
         if (ArmutMSHelper.CheckBannedUser(userToBlock.BannedUserId, userToBeBlock.Id.ToString()))
         {
-            throw new Exception("You have blocked this user before!");
+            throw new ApplicationException("You have blocked this user before!");
         }
 
         userToBlock.BannedUserId = ArmutMSHelper.Add(userToBlock.BannedUserId, userToBeBlock.Id.ToString());
@@ -55,7 +55,7 @@ public class UserService : IUserService
 
         if (userNameAndEmailCheck is not null)
         {
-            throw new Exception("This username or email has been used before");
+            throw new ApplicationException("This username or email has been used before");
         }
 
         var userModel = _mapper.Map<Users>(model);
