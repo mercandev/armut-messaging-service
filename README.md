@@ -41,6 +41,17 @@ After the installations are complete, you can see the containers made up of the 
 
 <img width="1000" alt="image" src="https://user-images.githubusercontent.com/22862224/224241128-1ae2340f-9841-49d7-b9e5-69e1a8999579.png">
 
+## Swagger
+
+You should use the following url to reach the swagger screen of the application.
+
+```bash
+  http://localhost:8080/swagger/index.html
+```
+
+<img width="1000" alt="image" src="https://user-images.githubusercontent.com/22862224/224423361-9cfa4ec9-0aca-4edf-a2dd-191f8affcd77.png">
+
+
 ## Test
 
 To test the application, enter the url to test with the "Websocket Request" option on "Postman".
