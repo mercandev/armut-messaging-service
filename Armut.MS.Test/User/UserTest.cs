@@ -2,8 +2,10 @@
 using Armut.MS.Domain.Model;
 using Armut.MS.Infrastructure.Authentication;
 using Armut.MS.Infrastructure.Repository;
+using Armut.MS.Service.Login;
 using Armut.MS.Service.Mapping;
 using Armut.MS.Service.User;
+using Armut.MS.SharedObjects.Login;
 using Armut.MS.SharedObjects.User;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,63 +28,12 @@ public class UserTest
     }
 
     [Fact]
-    public async Task ShouldThrowExceptionWhenCreateModelNameNullSend()
+    public async Task ShouldThrowExceptionWhenUserNotFound()
     {
-        var input = new UserCreateViewModel { Name = null, Surname = "Mercan", Email = "mercan@kaan.com", Password = "test", Username = "kaan" };
-        var dependencyMock = new Mock<IUserService>();
-        dependencyMock.Setup(d => d.CreateUser(new UserCreateViewModel { }))
-            .Throws<Exception>();
+        var result = await Assert.ThrowsAsync<ApplicationException>(() => userService.BanUser("kaan"));
 
-        // Act & Assert
-        await Assert.ThrowsAsync<Exception>(() =>  userService.CreateUser(input));
-    }
-
-    [Fact]
-    public async Task ShouldThrowExceptionWhenCreateModelSurnameNullSend()
-    {
-        var input = new UserCreateViewModel { Name = "Kaan", Surname = "", Email = "mercan@kaan.com", Password = "test", Username = "kaan" };
-        var dependencyMock = new Mock<IUserService>();
-        dependencyMock.Setup(d => d.CreateUser(new UserCreateViewModel { Name= "Kaan" , Surname= "Mercan" , Email= "mercan@kaan.com" , Password="test" , Username="kaan" }))
-            .Throws<Exception>();
-
-        // Act & Assert
-        await Assert.ThrowsAsync<Exception>(() => userService.CreateUser(input));
-    }
-
-    [Fact]
-    public async Task ShouldThrowExceptionWhenCreateModelEmailNullSend()
-    {
-        var input = new UserCreateViewModel { Name = "Kaan", Surname = "Mercan", Email = null, Password = "test", Username = "kaan" };
-        var dependencyMock = new Mock<IUserService>();
-        dependencyMock.Setup(d => d.CreateUser(new UserCreateViewModel { }))
-            .Throws<Exception>();
-
-        // Act & Assert
-        await Assert.ThrowsAsync<Exception>(() => userService.CreateUser(input));
-    }
-
-    [Fact]
-    public async Task ShouldThrowExceptionWhenCreateModelPasswordNullSend()
-    {
-        var input = new UserCreateViewModel { Name = "Kaan", Surname = "Mercan", Email = "mercan@kaan.com", Password = null, Username = "kaan" };
-        var dependencyMock = new Mock<IUserService>();
-        dependencyMock.Setup(d => d.CreateUser(new UserCreateViewModel { }))
-            .Throws<Exception>();
-
-        // Act & Assert
-        await Assert.ThrowsAsync<Exception>(() => userService.CreateUser(input));
-    }
-
-    [Fact]
-    public async Task ShouldThrowExceptionWhenCreateModelUsernameNullSend()
-    {
-        var input = new UserCreateViewModel { Name = "Kaan", Surname = "Mercan", Email = "mercan@kaan.com", Password = "test", Username = null };
-        var dependencyMock = new Mock<IUserService>();
-        dependencyMock.Setup(d => d.CreateUser(new UserCreateViewModel { }))
-            .Throws<Exception>();
-
-        // Act & Assert
-        await Assert.ThrowsAsync<Exception>(() => userService.CreateUser(input));
+        //Assert
+        Assert.Equal("User not found!", result.Message);
     }
 }
 

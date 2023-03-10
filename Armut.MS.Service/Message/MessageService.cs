@@ -50,7 +50,7 @@ public class MessageService : IMessageService
         if (!chatsHistory.Any())
         {
             _logger.Error($"Chats not found! - Query userId: {_authUserInformation.UserId}");
-            throw new ApplicationException("Chats not found!");
+            return new List<ChatRoomListViewModel>();
         }
 
         var mapperResult = _mapper.Map<List<ChatRoomListViewModel>>(chatsHistory);
@@ -74,7 +74,7 @@ public class MessageService : IMessageService
         if (!messageList.Any())
         {
             _logger.Error($"Messages not found! - Query userId: {_authUserInformation.UserId}");
-            throw new ApplicationException("Messages not found!");
+            return new List<MessageHistoryListViewModel>();
         }
 
         var mapperResult = _mapper.Map<List<MessageHistoryListViewModel>>(messageList);
