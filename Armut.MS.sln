@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armut.MS.Api", "Armut.MS.Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5014C048-4716-4599-8CEF-F0A88EBDBA12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armut.MS.Test", "Armut.MS.Test\Armut.MS.Test.csproj", "{15627686-7AD1-42DB-A1DA-8D8F1B9CF475}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{F54CC8F5-9F5D-4DFE-BDA8-CB11F9A655DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F54CC8F5-9F5D-4DFE-BDA8-CB11F9A655DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F54CC8F5-9F5D-4DFE-BDA8-CB11F9A655DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15627686-7AD1-42DB-A1DA-8D8F1B9CF475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15627686-7AD1-42DB-A1DA-8D8F1B9CF475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15627686-7AD1-42DB-A1DA-8D8F1B9CF475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15627686-7AD1-42DB-A1DA-8D8F1B9CF475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +58,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F54CC8F5-9F5D-4DFE-BDA8-CB11F9A655DE} = {19E62403-FB38-4B9A-BE61-CEBD505E2E2C}
+		{15627686-7AD1-42DB-A1DA-8D8F1B9CF475} = {5014C048-4716-4599-8CEF-F0A88EBDBA12}
 	EndGlobalSection
 EndGlobal
