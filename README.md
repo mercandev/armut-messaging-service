@@ -31,10 +31,22 @@ Run the following command to get the created container to the same network as ot
   docker network connect armut-messaging-service_bridge armutmessaging
 ```
 
+After the installations are complete, you can see the containers made up of the Docker Desktop application. You can see the same by running the following code from the terminal.
+
+```bash
+  docker ps
+```
+
+<img width="1000" alt="image" src="https://user-images.githubusercontent.com/22862224/224241128-1ae2340f-9841-49d7-b9e5-69e1a8999579.png">
+
+## Test
+
 To test the application, enter the url to test with the "Websocket Request" option on "Postman".
 
 
 <img width="1000" alt="image" src="https://user-images.githubusercontent.com/22862224/224198496-508be300-48fb-4eff-b25e-697cec33b799.png"> <img width="1000" alt="image" src="https://user-images.githubusercontent.com/22862224/224198555-0f4c34b8-1ee6-4db6-92af-8befbb2f507c.png">
+
+## Kibana & Error and Informations Logs
 
 After ElasticSearch and Kibana are installed, go to the following index by following the path of Discover -> Create Index while opening Kibana. When you add the following command to the box that appears in front of you, you will be able to see the errors and notifications that occur in the application.
 
