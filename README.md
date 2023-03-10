@@ -1,5 +1,7 @@
 ## Armut Messaging Service
 
+[![.NET Core Desktop](https://github.com/mercandev/armut-messaging-service/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/mercandev/armut-messaging-service/actions/workflows/dotnet-desktop.yml)
+
 The chat structure of the messaging service works as follows. Developed with WebSocket. The structure is only suitable for two users to text at the same time. Multiple sessions are not supported. Users must be logged in and received a token in order to send a message to the username they entered. User can see the chat rooms and message details used outside of messaging.
 
 ## Structure
