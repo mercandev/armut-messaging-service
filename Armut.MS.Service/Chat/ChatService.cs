@@ -113,9 +113,10 @@ public class ChatService : IChatService
             {
                 if(await IsUserBanned(_authUserInformation.Username))
                 {
+                    await RecordMessage(roomInformation, $"You have been blocked by {username}! The session has ended.");
+                    await CloseRoom(roomInformation);
                     await SendAsync($"You have been blocked by {username}! The session has ended.", CancellationToken.None);
-                    await RecordMessage(roomInformation, $"You have been blocked by {username}! The session has ended.", true);
-
+                   
                     throw new Exception("You have been blocked by user. The session has ended!");
                 }
 
@@ -135,7 +136,8 @@ public class ChatService : IChatService
         {
             await removedSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Socket closed", CancellationToken.None);
 
-            await RecordMessage(roomInformation, $"{_authUserInformation.Username} left the chat", false);
+            await RecordMessage(roomInformation, $"{_authUserInformation.Username} left the chat");
+            await CloseRoom(roomInformation);
             await SendAsync($"{_authUserInformation.Username} left the chat", CancellationToken.None);
         }
     }
@@ -153,18 +155,25 @@ public class ChatService : IChatService
     }
 
 
-    private async Task RecordMessage(Chats roomInformation , string message , bool isActive = true)
+    private async Task RecordMessage(Chats roomInformation , string message)
     {
         var messages = new Messages
         {
             ChatId = roomInformation.Id,
             Content = message,
             OwnerId = roomInformation.OwnerId,
-            ReceiverId = roomInformation.InvitedUserId,
-            IsActive = isActive
+            ReceiverId = roomInformation.InvitedUserId
         };
 
         await _messagesRepository.InsertOneAsync(messages);
+    }
+
+    private async Task CloseRoom(Chats roomInformation)
+    {
+        roomInformation.IsActive = false;
+        roomInformation.EndDate = DateTime.Now;
+
+        await _chatsRepository.ReplaceOneAsync(roomInformation);
     }
 
     private void CheckIsUserBanned(string[] bannedUserId, string username)
@@ -185,4 +194,3 @@ public class ChatService : IChatService
        return ArmutMSHelper.CheckBannedUser(userBannedList, _authUserInformation.UserId.ToString());
     }
 }
-

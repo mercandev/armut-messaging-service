@@ -8,12 +8,17 @@ namespace Armut.MS.Domain.Model;
 [BsonCollection("users")]
 public class Users : Document
 {
+    public Users()
+    {
+        BannedUserId = BannedUserId is null ? new string[] {""} : BannedUserId; //TODO: Temporarily added because mongodb shows undefined arrays as null.
+    }
+
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Username { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
-    public string[] BannedUserId { get; set; }
+    public string[] BannedUserId { get; set; } 
 
     [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
     public DateTime LastLoginDate { get; set; }
